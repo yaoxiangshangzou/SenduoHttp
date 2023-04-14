@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 import senduo.com.senduohttp.http.chain.CallServiceInterceptor;
 import senduo.com.senduohttp.http.chain.ConnectionInterceptor;
-import senduo.com.senduohttp.http.chain.HeadersInterceptor;
+import senduo.com.senduohttp.http.chain.BridgeInterceptor;
 import senduo.com.senduohttp.http.chain.Interceptor;
 import senduo.com.senduohttp.http.chain.InterceptorChain;
-import senduo.com.senduohttp.http.chain.RetryInterceptor;
+import senduo.com.senduohttp.http.chain.RetryAndFollowUpInterceptor;
 
 /**
  * *****************************************************************
@@ -57,8 +57,8 @@ public class Call {
     Response getResponse() throws IOException{
         ArrayList<Interceptor> interceptors = new ArrayList<>();
         interceptors.addAll(httpClient.getInterceptors());
-        interceptors.add(new RetryInterceptor());
-        interceptors.add(new HeadersInterceptor());
+        interceptors.add(new RetryAndFollowUpInterceptor());
+        interceptors.add(new BridgeInterceptor());
         interceptors.add(new ConnectionInterceptor());
         interceptors.add(new CallServiceInterceptor());
         InterceptorChain interceptorChain = new InterceptorChain(interceptors,0,this,null);

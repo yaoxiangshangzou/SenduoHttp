@@ -14,6 +14,7 @@ import senduo.com.senduohttp.http.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
     HttpClient client;
 
     @Override
@@ -24,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         client = new HttpClient.Builder()
                 .setRetryTimes(3)
                 .build();
+
+        String str = JsonAssetsUtil.getJson("dynamic.json", this);
+        Log.e(TAG, "onCreate: "+str);
     }
 
     public void get(View view) {

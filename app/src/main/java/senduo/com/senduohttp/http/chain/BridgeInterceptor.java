@@ -17,7 +17,7 @@ import senduo.com.senduohttp.http.Response;
  * * 修改历史：2018/5/5 18:11*************************************
  **/
 
-public class HeadersInterceptor implements Interceptor {
+public class BridgeInterceptor implements Interceptor {
     @Override
     public Response intercept(InterceptorChain interceptorChain) throws IOException {
 

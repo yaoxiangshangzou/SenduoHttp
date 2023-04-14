@@ -15,7 +15,7 @@ import senduo.com.senduohttp.http.Response;
  * * 修改历史：2018/5/5 17:22*************************************
  **/
 
-public class RetryInterceptor implements Interceptor {
+public class RetryAndFollowUpInterceptor implements Interceptor {
     @Override
     public Response intercept(InterceptorChain interceptorChain) throws IOException {
         Log.e("interceprot", "重试拦截器....");
